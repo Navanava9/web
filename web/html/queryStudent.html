@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to left, rgba(128, 111, 0, 0.5), rgba(87, 131, 96, 0.5));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search {
+            height: 40px;
+            width: 500px;
+        }
+
+        .search form {
+            width: 100%;
+            height: 100%;
+        }
+
+        .search form input:nth-child(2) {
+            width: 400px;
+            height: 100%;
+            font-size: 16px;
+            text-indent: 40px;
+            border: none;
+            float: left;
+        }
+
+        .search form input:nth-child(3) {
+            width: 100px;
+            height: 100%;
+            font-size: 16px;
+            letter-spacing: 5px;
+            border: none;
+        }
+
+        .search form img {
+            position: absolute;
+            left: 50vw;
+            transform: translateX(-250px);
+            margin-top: 10px;
+            margin-left: 10px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="search">
+    <form action="../studentQuery.do" method="post">
+        <img src="../svg/search.svg">
+        <input style="outline: none;" type="text" name="studentInfo" placeholder="内容">
+        <input type="submit" value="搜索">
+    </form>
+</div>
+</body>
+</html>

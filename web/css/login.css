@@ -1,0 +1,111 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans Light';
+    letter-spacing: .05em;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.big-box {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.big-box .big-text {
+    text-align: center;
+    font-size: 100px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.warning-box {
+    display: none;
+    top: 2%;
+    left: 50%;
+    border-radius: 10px;
+    background-color: rgba(24, 2, 2, 0.568);
+    width: 400px;
+    height: 25px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.warning-box .warning-text {
+    text-align: center;
+    color: #fff;
+}
+
+.container {
+    height: 100%;
+    background: linear-gradient(to left, rgba(128, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/red.jpeg);
+    background-size: cover
+}
+
+.login-wrapper {
+    top: 50%;
+    left: 80%;
+    border-radius: 20px;
+    background-color: #fff;
+    width: 250px;
+    height: 500px;
+    padding: 0px 50px;
+    position: relative;
+    transform: translate(-50%, -50%);
+}
+
+.login-wrapper .header {
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 200px;
+}
+
+.login-wrapper .form-wrapper .input-item {
+    width: 90%;
+    margin-bottom: 20px;
+    border: none;
+    padding: 10px;
+    border-bottom: 2px solid rgb(73, 73, 73);
+    font-size: 15px;
+    outline: none;
+}
+
+.login-wrapper .form-wrapper .input-item::placeholder {
+    text-transform: uppercase;
+}
+
+.login-wrapper .form-wrapper .btn {
+    text-align: center;
+    padding: 5px 105px;
+    margin-top: 10px;
+    border: none;
+    background-image: linear-gradient(to left, rgb(131, 0, 0), rgb(41, 0, 0));
+    color: rgb(255, 255, 255);
+}
+
+.login-wrapper .form-wrapper .btn:hover {
+    transform: scale(1.01);
+}
+
+.login-wrapper .form-wrapper .btn:active {
+    transform: scale(0.99);
+}
+
+.login-wrapper .msg {
+    text-align: center;
+    line-height: 75px;
+}
+
+.login-wrapper .msg a {
+    text-decoration-line: none;
+    color: #c26565;
+}

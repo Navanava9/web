@@ -1,2 +1,2 @@
 # web
-Learn yo use only!
+Learn to use only!

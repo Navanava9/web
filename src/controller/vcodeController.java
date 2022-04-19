@@ -9,11 +9,12 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.Random;
 
-@WebServlet(name = "vcodeController", value = "/VCodeController.do")
+@WebServlet(name = "vcodeController", value = "/VCode.do")
 public class vcodeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/jpeg");
+        // 创建会话
         HttpSession session = request.getSession();
         // 设置页面不缓存
         response.setHeader("Pragma", "No-cache");
@@ -53,7 +54,7 @@ public class vcodeController extends HttpServlet {
             g.drawString(rand, 13 * i + 6, 16);
         }
         //将验证码存入session
-        session.setAttribute("vcode", sRand);
+        session.setAttribute("VCode", sRand);
         //图像生效
         g.dispose();
         //输出图像到页面

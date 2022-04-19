@@ -22,6 +22,8 @@
             <form method="post" action="../login.do">
                 <input type="text" id="username" name="userName" placeholder="username" class="input-item">
                 <input type="password" id="password" name="password" placeholder="password" class="input-item">
+                <input type="text" id="VCode" name="VCode" placeholder="Answer" class="input-item">
+                <img src="../VCode.do" id="refresh_VCode" style="cursor:pointer;" onclick="refresh_VCode();">
                 <input type="submit" value="Login" class="btn">
             </form>
         </div>

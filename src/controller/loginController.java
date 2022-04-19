@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -21,13 +22,21 @@ public class loginController extends HttpServlet {
 
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
+        String InputVCode = request.getParameter("VCode");
 
         String str = "";
 
-        if (a.userLogin(userName, password))
-            str = "success!";
-        else
-            str = "failed!";
+        HttpSession session = request.getSession();
+        String VCode = (String) session.getAttribute("VCode");
+
+        if (!InputVCode.equals(VCode))
+            str = "answer wrong!";
+        else {
+            if (a.userLogin(userName, password))
+                str = "success!";
+            else
+                str = "failed!";
+        }
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();

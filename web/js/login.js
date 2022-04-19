@@ -19,3 +19,8 @@ function click_login() {
         $("warningBox").style.display = "none";
     }
 }
+
+function refresh_VCode() {
+    var t = new date();
+    $(refresh_VCode).src = "../VCode.do?t=" + t;
+}

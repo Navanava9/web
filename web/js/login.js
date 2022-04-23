@@ -21,6 +21,6 @@ function click_login() {
 }
 
 function refresh_VerifyCode() {
-    var t = new date();
+    var t = new Date();
     $("VCodeImg").src = "../VCode.do?t=" + t;
 }

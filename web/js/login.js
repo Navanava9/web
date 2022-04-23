@@ -20,7 +20,7 @@ function click_login() {
     }
 }
 
-function refresh_VCode() {
+function refresh_VerifyCode() {
     var t = new date();
-    $(refresh_VCode).src = "../VCode.do?t=" + t;
+    $("VCodeImg").src = "../VCode.do?t=" + t;
 }

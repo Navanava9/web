@@ -30,7 +30,7 @@ public class loginController extends HttpServlet {
         String VCode = (String) session.getAttribute("VCode");
 
         if (!InputVCode.equals(VCode))
-            str = "answer wrong!";
+            str ="answer wrong!";
         else {
             if (a.userLogin(userName, password))
                 str = "success!";

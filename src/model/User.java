@@ -4,29 +4,55 @@ import java.sql.*;
 
 public class User {
 
-    public boolean userRegister(String userName, String pwd) {
+    private String id;
+    private String password;
+
+    public User() {
+        super();
+    }
+
+    public User(String id, String password) {
+        this.id = id;
+        this.password = password;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean userRegister() {
         boolean ret = false;
 
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            con = DriverManager
-                    .getConnection(
-                            "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC",
-                            "root", "wWW714086602");
+            con = DriverManager.getConnection(
+                    "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC",
+                    "root", "wWW714086602");
 
             String sql = "INSERT INTO user VALUES (?, ?)";
             PreparedStatement pst = con.prepareStatement(sql);
 
-            pst.setString(1, userName);
-            pst.setString(2, pwd);
+            pst.setString(1, id);
+            pst.setString(2, password);
 
             int rs = pst.executeUpdate();
 
-            if (rs == 1) {
+            if (rs == 1)
                 ret = true;
-            }
 
             pst.close();
             con.close();
@@ -44,29 +70,27 @@ public class User {
         return ret;
     }
 
-    public boolean userLogin(String userName, String password) {
+    public boolean userLogin() {
         boolean ret = false;
 
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            con = DriverManager
-                    .getConnection(
-                            "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC",
-                            "root", "wWW714086602");
+            con = DriverManager.getConnection(
+                    "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC",
+                    "root", "wWW714086602");
 
             String sql = "select * from user where userName = ? and password = ?";
             PreparedStatement pst = con.prepareStatement(sql);
 
-            pst.setString(1, userName);
+            pst.setString(1, id);
             pst.setString(2, password);
 
             ResultSet rs = pst.executeQuery();
 
-            if (rs.next()) {
+            if (rs.next())
                 ret = true;
-            }
 
             rs.close();
             pst.close();

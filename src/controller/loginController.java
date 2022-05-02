@@ -18,21 +18,20 @@ public class loginController extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        User a = new User();
-
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         String InputVCode = request.getParameter("VCode");
 
+        User a = new User(userName, password);
         String str = "";
 
         HttpSession session = request.getSession();
         String VCode = (String) session.getAttribute("VCode");
 
         if (!InputVCode.equals(VCode))
-            str ="answer wrong!";
+            str = "answer wrong!";
         else {
-            if (a.userLogin(userName, password))
+            if (a.userLogin())
                 str = "success!";
             else
                 str = "failed!";
@@ -40,7 +39,6 @@ public class loginController extends HttpServlet {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        out.println(userName);
         out.println(str);
         out.flush();
         out.close();

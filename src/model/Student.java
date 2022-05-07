@@ -1,6 +1,12 @@
 package model;
 
-import java.sql.*;
+import slimModel.ProvinceSurvey;
+import slimModel.SQLInfo;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Student {
@@ -9,13 +15,15 @@ public class Student {
     private String phone_number;
     private String e_mail;
     private String gender;
+    private String province;
 
-    public Student(String id, String name, String phone_number, String e_mail, String gender) {
+    public Student(String id, String name, String phone_number, String e_mail, String gender, String province) {
         this.id = id;
         this.name = name;
         this.phone_number = phone_number;
         this.e_mail = e_mail;
         this.gender = gender;
+        this.province = province;
     }
 
     public Student() {
@@ -62,17 +70,24 @@ public class Student {
         this.gender = gender;
     }
 
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
     public ArrayList<Student> query(String info) {
         ArrayList<Student> list = new ArrayList<Student>();
 
         if (info.equals("男")) info = "male";
         if (info.equals("女")) info = "female";
 
+        SQLInfo s = new SQLInfo();
         Connection con = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC",
-                    "root", "wWW714086602");
+            con = s.connectSQL();
 
             String sql = "SELECT *\n" +
                     "FROM student\n" +
@@ -96,6 +111,41 @@ public class Student {
                 stu.setPhone_number(rs.getString(4));
                 stu.setE_mail(rs.getString(5));
                 list.add(stu);
+            }
+            pst.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
+    }
+
+    public ArrayList<ProvinceSurvey> getProvinceSummary() {
+        ArrayList<ProvinceSurvey> list = new ArrayList<ProvinceSurvey>();
+
+        SQLInfo s = new SQLInfo();
+        Connection con = null;
+        try {
+            con = s.connectSQL();
+
+            String sql = "select COUNT(province),province from test.student group by province;";
+
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                ProvinceSurvey pro = new ProvinceSurvey();
+                pro.setValue(rs.getInt(1));
+                pro.setName(rs.getString(2));
+                list.add(pro);
             }
             pst.close();
         } catch (Exception e) {

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="../Lib/jquery-3.6.0.js"></script>
+    <script src="../Lib/echarts.js"></script>
+</head>
+<body>
+<div id="weather" style="width: 600px;height:400px;"></div>
+<p id="test"></p>
+</body>
+</html>
+
+<script>
+    $.getJSON("https://api.seniverse.com/v3/weather/daily.json?key=SzgLcjGGrDW9VOgkb&location=wuhan&language=zh-Hans&unit=c&start=-1&days=5",
+        function (d) {
+            var date = [];
+            var high = [];
+            var low = [];
+
+            for (let i = 0; i < d.results[0].daily.length; i++) {
+                date[i] =  d.results[0].daily[i].date;
+                high[i] = d.results[0].daily[i].high;
+                low[i] = d.results[0].daily[i].low;
+            }
+
+            var weather = echarts.init(document.getElementById('weather'));
+
+            option = {
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {},
+                toolbox: {
+                    show: true,
+                    feature: {
+                        dataZoom: {
+                            yAxisIndex: 'none'
+                        },
+                        dataView: {readOnly: false},
+                        magicType: {type: ['line', 'bar']},
+                        restore: {},
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: date
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        formatter: '{value} °C'
+                    }
+                },
+                series: [
+                    {
+                        name: 'Highest',
+                        type: 'line',
+                        data: high,
+                        markPoint: {
+                            data: [
+                                {type: 'max', name: 'Max'},
+                                {type: 'min', name: 'Min'}
+                            ]
+                        },
+                        markLine: {
+                            data: [{type: 'average', name: 'Avg'}]
+                        }
+                    },
+                    {
+                        name: 'Lowest',
+                        type: 'line',
+                        data: low,
+                        markPoint: {
+                            data: [{name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}]
+                        },
+                        markLine: {
+                            data: [
+                                {type: 'average', name: 'Avg'},
+                                [
+                                    {
+                                        symbol: 'none',
+                                        x: '90%',
+                                        yAxis: 'max'
+                                    },
+                                    {
+                                        symbol: 'circle',
+                                        label: {
+                                            position: 'start',
+                                            formatter: 'Max'
+                                        },
+                                        type: 'max',
+                                        name: '最高点'
+                                    }
+                                ]
+                            ]
+                        }
+                    }
+                ]
+            };
+
+            weather.setOption(option);
+        });
+</script>

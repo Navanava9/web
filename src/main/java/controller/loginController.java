@@ -15,29 +15,27 @@ import java.io.PrintWriter;
 public class loginController extends HttpServlet {
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         String InputVCode = request.getParameter("VCode");
 
-        User a = new User(userName, password);
+        User a = new User();
         String str = "";
 
         HttpSession session = request.getSession();
         String VCode = (String) session.getAttribute("VCode");
 
         if (!InputVCode.equals(VCode))
-            str = "answer wrong!";
+            str = "验证码错误!";
         else {
-            if (a.userLogin())
-                str = "success!";
+            if (a.userLogin(userName, password))
+                str = "登录成功！";
             else
-                str = "failed!";
+                str = "用户名或密码不正确！";
         }
 
-        response.setContentType("text/html");
+        response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         out.println(str);
         out.flush();

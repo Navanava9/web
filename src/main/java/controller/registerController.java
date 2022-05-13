@@ -15,25 +15,34 @@ public class registerController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
-        String re_password = request.getParameter("re_password");
+        String name = request.getParameter("name");
+        String gender = request.getParameter("gender");
+        String email = request.getParameter("email");
+        String phone_num = request.getParameter("phone_num");
+        String province = request.getParameter("province");
+        String city = request.getParameter("city");
+        String birthday = request.getParameter("birthday");
 
-        User a = new User(userName, password);
+        User a = new User(userName, name, password, gender, email, phone_num, province, city, birthday);
         String str = "";
 
-        if (!re_password.equals(password))
-            str = "Different passwords";
+        if (a.haveSameEmail(email))
+            str = "该邮箱已被使用！";
+        else if (a.haveSameID(userName))
+            str = "该用户名已被使用！";
+        else if (a.haveSamePhone(phone_num))
+            str = "该手机号已被使用！";
         else {
             if (a.userRegister())
-                str = "success!";
+                str = "注册成功！";
             else
-                str = "failed!";
+                str = "注册失败!";
         }
 
-        response.setContentType("text/html");
+
+        response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         out.println(str);
         out.flush();

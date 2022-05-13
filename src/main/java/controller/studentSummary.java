@@ -1,6 +1,6 @@
 package controller;
 
-import model.Student;
+import model.User;
 import slimModel.ProvinceSurvey;
 
 import javax.servlet.*;
@@ -16,14 +16,14 @@ import com.google.gson.Gson;
 public class studentSummary extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Student dao = new Student();
+        User dao = new User();
         String str ="";
 
-        ArrayList<ProvinceSurvey> list = dao.getProvinceSummary();
+//        ArrayList<ProvinceSurvey> list = dao.getProvinceSummary();
 
         response.setContentType("text/html;charset=utf-8");
         Gson gson = new Gson();
-        str = gson.toJson(list);
+//        str = gson.toJson(list);
 
         System.out.println(str);
 

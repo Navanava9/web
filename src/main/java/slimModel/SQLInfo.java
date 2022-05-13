@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class SQLInfo {
     private String DriverPath = "com.mysql.jdbc.Driver";
-    private String url = "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC";
+    private String url = "jdbc:mysql://127.0.0.1:3306/web?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false";
     private String user = "root";
     private String password = "wWW714086602";
 

@@ -1,6 +1,6 @@
 package controller;
 
-import model.Student;
+import model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,11 +20,11 @@ public class studentQueryController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         String studentName = request.getParameter("studentInfo");
 
-        Student dao = new Student();
+        User dao = new User();
 
-        ArrayList<Student> list = dao.query(studentName);
+//        ArrayList<User> list = dao.query(studentName);
 
-        request.setAttribute("result", list);
+//        request.setAttribute("result", list);
         request.getRequestDispatcher("./jsp/queryResult.jsp").forward(request, response);
     }
 }

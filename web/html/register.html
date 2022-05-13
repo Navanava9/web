@@ -1,36 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cn">
 
 <head>
     <meta charset="UTF-8">
     <title>register</title>
-    <link rel="stylesheet" href="../css/register.css">
+    <link href="../css/notify.css">
+
+    <script src="../Lib/jquery-3.6.0.js"></script>
     <script src="../js/register.js"></script>
+    <script src="../js/province_city_info.js"></script>
 </head>
 
 <body>
-<div class="container">
-    <div class="big-box" id="bigBox">
-        <p class="big-text" id="bigText">JAVA WEB</p>
-    </div>
-    <div class="warning-box" id="warningBox">
-        <p class="warning-text" id="warningText"></p>
-    </div>
-    <div class="register-wrapper">
-        <div class="header">Sign Up</div>
-        <div class="form-wrapper">
-            <form method="post" action="../register.do">
-                <input type="text" id="username" name="username" placeholder="username" class="input-item">
-                <input type="password" id="password" name="password" placeholder="password" class="input-item">
-                <input type="password" id="re_password" name="re_password" placeholder="re-password" class="input-item">
-                <input type="submit" value="Finish" class="btn" onclick="click_register()">
-            </form>
-        </div>
-        <div class="msg">
-            Existing account? <a href="login.html">log in</a>
-        </div>
-    </div>
-</div>
+<div class="notify-container"></div>
+注册
+<input id="username" name="username" placeholder="用户名" type="text">
+<input id="password" name="password" placeholder="密码" type="password">
+<input id="re_password" name="re_password" placeholder="再次输入密码" type="password">
+<input id="gender1" name="gender" type="radio" value="male">男
+<input id="gender0" name="gender" type="radio" value="female">女
+<input id="name" name="name" placeholder="姓名" type="text">
+<input id="email" name="email" placeholder="邮箱" type="text">
+<input id="phone_num" name="phone_num" placeholder="手机号码" type="text">
+<select id="province" name="province">
+    <option value="">省份</option>
+    <script>
+        for (let i = 0; i < provinceArr.length; i++)
+            $("#province").append("<option value='" + i + "'>" + provinceArr[i] + "</option>");
+    </script>
+</select>
+<select id="city" name="city">
+    <option value="">城市</option>
+</select>
+<input id="birthday" name="birthday" type="date">
+<input id="finish" type="submit" value="提交">
+已经拥有账户了？ <a href="login.html">点击登录</a>
 </body>
 
 </html>

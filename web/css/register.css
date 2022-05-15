@@ -1,0 +1,50 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Times New Roman';
+    letter-spacing: .05em;
+}
+
+body {
+    height: 100%;
+    background: url(../img/pink.jpeg) no-repeat fixed;
+    background-size: cover;
+}
+
+#header {
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+    line-height: 200px;
+}
+
+.MyContainer {
+    top: 50%;
+    left: 50%;
+    border-radius: 20px;
+    background-color: #fff;
+    width: 1250px;
+    height: 800px;
+    padding: 0px 50px;
+    position: fixed;
+    transform: translate(-50%, -50%);
+}
+
+.MyContainer .part1 {
+    width: 550px;
+    height: 500px;
+    padding: 10px 20px;
+    float: left;
+}
+
+.MyContainer .part2 {
+    width: 550px;
+    height: 500px;
+    padding: 10px 20px;
+    float: right;
+}
+
+.MyContainer .btn {
+    background-image: linear-gradient(to left, rgb(238, 87, 203), rgb(255, 47, 211));
+    color: rgb(255, 255, 255);
+}

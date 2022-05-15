@@ -1,10 +1,10 @@
 package slimModel;
 
-public class ProvinceSurvey {
+public class ProvinceSummary {
     private String name;
     private int value;
 
-    public ProvinceSurvey() {
+    public ProvinceSummary() {
         super();
     }
 

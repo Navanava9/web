@@ -5,18 +5,16 @@
     letter-spacing: .05em;
 }
 
-html {
-    height: 100%;
-}
-
 body {
     height: 100%;
+    background: url(../img/red.jpeg) no-repeat fixed;
+    background-size: cover;
 }
 
 .big-box {
-    position: absolute;
+    position: fixed;
     top: 50%;
-    left: 30%;
+    left: 25%;
     transform: translate(-50%, -50%);
 }
 
@@ -27,21 +25,15 @@ body {
     font-weight: 600;
 }
 
-.container {
-    height: 100%;
-    background: linear-gradient(to left, rgba(128, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/red.jpeg);
-    background-size: cover
-}
-
 .login-wrapper {
     top: 50%;
-    left: 80%;
+    left: 75%;
     border-radius: 20px;
     background-color: #fff;
-    width: 250px;
-    height: 500px;
+    width: 380px;
+    height: 550px;
     padding: 0px 50px;
-    position: relative;
+    position: fixed;
     transform: translate(-50%, -50%);
 }
 
@@ -52,25 +44,8 @@ body {
     line-height: 200px;
 }
 
-.login-wrapper .form-wrapper .input-item {
-    width: 90%;
-    margin-bottom: 20px;
-    border: none;
-    padding: 10px;
-    border-bottom: 2px solid rgb(73, 73, 73);
-    font-size: 15px;
-    outline: none;
-}
-
-.login-wrapper .form-wrapper .input-item::placeholder {
-    text-transform: uppercase;
-}
-
 .login-wrapper .form-wrapper .btn {
-    text-align: center;
-    padding: 5px 105px;
-    margin-top: 10px;
-    border: none;
+    padding: 5px 123px;
     background-image: linear-gradient(to left, rgb(131, 0, 0), rgb(41, 0, 0));
     color: rgb(255, 255, 255);
 }

@@ -25,16 +25,16 @@
         <td>id</td>
         <td>name</td>
         <td>gender</td>
-        <td>phone</td>
-        <td>email</td>
+        <td>province</td>
+        <td>city</td>
     </tr>
     <c:forEach var="stu" items="${result}">
         <tr>
-            <td>${stu.id}</td>
+            <td>${stu.ID}</td>
             <td>${stu.name}</td>
             <td>${stu.gender}</td>
-            <td>${stu.phone_number}</td>
-            <td>${stu.e_mail}</td>
+            <td>${stu.province}</td>
+            <td>${stu.city}</td>
         </tr>
     </c:forEach>
 </table>

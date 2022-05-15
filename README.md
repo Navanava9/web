@@ -8,7 +8,8 @@
 ## 使用库
 ### 前端
 - **jQuery**: 3.6.0
-- **echarts**: 
+- **echarts**: 5.3.2
 - **bootstrap**: 5.1.3
 ### 后端
-- **Gson**: 
+- **Gson**: 2.5
+- **mysql-connector-java**: 8.0.12

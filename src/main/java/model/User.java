@@ -1,8 +1,15 @@
 package model;
 
+import slimModel.GenderSummary;
+import slimModel.ProvinceSummary;
 import slimModel.SQLInfo;
+import slimModel.UserQuery;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class User {
     private String id;
@@ -208,6 +215,7 @@ public class User {
 
         return ret;
     }
+
     public boolean userLogin(String arg1, String arg2) {
         boolean ret = false;
 
@@ -243,6 +251,59 @@ public class User {
         }
 
         return ret;
+    }
+
+    public ArrayList<UserQuery> query(String info) {
+        ArrayList<UserQuery> list = new ArrayList<UserQuery>();
+
+        SQLInfo s = new SQLInfo();
+        Connection con = null;
+        try {
+            con = s.connectSQL();
+            String[] args = info.split("\s");
+            String sql = "SELECT *\n" +
+                    "FROM web.user t\n" +
+                    "WHERE (ID LIKE '%" + args[0] + "%'\n" +
+                    "OR name LIKE '%" + args[0] + "%'\n" +
+                    "OR gender LIKE '%" + args[0] + "%'\n" +
+                    "OR province LIKE '%" + args[0] + "%'\n" +
+                    "OR city LIKE '%" + args[0] + "%')";
+            for (int i = 1; i < args.length; i++) {
+                sql += ("AND (ID LIKE '%" + args[i] + "%'\n" +
+                        "OR name LIKE '%" + args[i] + "%'\n" +
+                        "OR gender LIKE '%" + args[i] + "%'\n" +
+                        "OR province LIKE '%" + args[i] + "%'\n" +
+                        "OR city LIKE '%" + args[i] + "%')");
+            }
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                UserQuery u = new UserQuery();
+                u.setID(rs.getString("ID"));
+                u.setName(rs.getString("name"));
+                u.setGender(rs.getString("gender"));
+                u.setProvince(rs.getString("province"));
+                u.setCity(rs.getString("city"));
+                list.add(u);
+            }
+
+            rs.close();
+            pst.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (con != null)
+                    con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return list;
     }
 
     public boolean userRegister() {
@@ -285,5 +346,79 @@ public class User {
         }
 
         return ret;
+    }
+
+    public ArrayList<ProvinceSummary> getProvinceSummary() {
+        ArrayList<ProvinceSummary> list = new ArrayList<ProvinceSummary>();
+
+        SQLInfo s = new SQLInfo();
+        Connection con = null;
+        try {
+            con = s.connectSQL();
+
+            String sql = "select COUNT(province),province from web.user group by province;";
+
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                ProvinceSummary pro = new ProvinceSummary();
+                pro.setValue(rs.getInt(1));
+                pro.setName(rs.getString(2));
+                list.add(pro);
+            }
+            pst.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return list;
+    }
+
+    public ArrayList<GenderSummary> getGenderSummary() {
+        ArrayList<GenderSummary> list = new ArrayList<GenderSummary>();
+
+        SQLInfo s = new SQLInfo();
+        Connection con = null;
+        try {
+            con = s.connectSQL();
+
+            String sql = "select COUNT(gender),gender from web.user group by gender;";
+
+            PreparedStatement pst = con.prepareStatement(sql);
+
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                GenderSummary gen = new GenderSummary();
+                gen.setValue(rs.getInt(1));
+                gen.setName(rs.getString(2));
+                list.add(gen);
+            }
+            pst.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return list;
     }
 }

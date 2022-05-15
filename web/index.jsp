@@ -32,7 +32,7 @@
             border-radius: 20px;
             background-color: #fff;
             width: 250px;
-            height: 250px;
+            height: 320px;
             padding: 0px 50px;
             position: relative;
             transform: translate(-50%, -50%);
@@ -52,9 +52,10 @@
 <body>
 <div class="container">
     <div class="select-box">
-        <p class="select-part"><a title="登录" href="./html/login.html">login</a></p>
-        <p class="select-part"><a title="查询" href="./html/queryStudent.html">query</a></p>
-        <p class="select-part"><a title="注册" href="./html/register.html">register</a></p>
+        <p class="select-part"><a title="登录" href="./html/login.html">登录</a></p>
+        <p class="select-part"><a title="查询" href="./html/query.html">查询</a></p>
+        <p class="select-part"><a title="注册" href="./html/register.html">注册</a></p>
+        <p class="select-part"><a title="概要" href="./html/summary.html">概要</a></p>
     </div>
 </div>
 

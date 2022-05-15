@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
@@ -8,28 +8,37 @@
     <link href="../css/login.css" rel="stylesheet">
     <link href="../css/notify.css" rel="stylesheet">
 
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+
     <script src="../Lib/jquery-3.6.0.js"></script>
     <script src="../js/login.js"></script>
 </head>
 
 <body>
-<div class="container">
-    <div class="big-box" id="bigBox">
-        <p class="big-text" id="bigText">JAVA WEB</p>
-    </div>
-    <div class="notify-container"></div>
-    <div class="login-wrapper">
-        <div class="header">登录</div>
-        <div class="form-wrapper">
-            <input class="input-item" id="username" name="userName" placeholder="用户名/手机号码" type="text">
-            <input class="input-item" id="password" name="password" placeholder="密码" type="password">
-            <input class="input-item" id="VCode" name="VCode" placeholder="验证码" type="text">
+<div class="notify-container"></div>
+<div class="big-box" id="bigBox">
+    <p class="big-text" id="bigText">JAVA WEB</p>
+</div>
+<div class="login-wrapper">
+    <div class="header">登录</div>
+    <div class="form-wrapper">
+        <div class="form-floating mb-3 mt-3">
+            <input class="form-control" id="username" name="userName" placeholder="用户名/手机号码" type="text">
+            <label for="username">用户名/手机号码</label>
+        </div>
+        <div class="form-floating mb-3 mt-3">
+            <input class="form-control" id="password" name="password" placeholder="密码" type="password">
+            <label for="password">密码</label>
+        </div>
+        <div class="input-group mb-3 mt-3">
+            <input class="form-control" id="VCode" name="VCode" placeholder="验证码" type="text">
             <img id="VCodeImg" src="../VCode.do" style="cursor:pointer;" title="tap to change">
-            <input class="btn" id="submitBtn" type="submit" value="登录">
         </div>
-        <div class="msg">
-            还有没有账号? <a href="register.html">点击注册</a>
-        </div>
+        <input class="btn" id="submitBtn" type="submit" value="登录">
+    </div>
+    <div class="msg">
+        还有没有账号? <a href="register.html">点击注册</a>
     </div>
 </div>
 </body>

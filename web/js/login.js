@@ -4,12 +4,12 @@ var notify = {
         let ne = $(`<div class="notify" style="animation:notify-show-hide ${(duration < 0 ? 5 : duration) / 2}s ease-in-out${duration < 0 ? ';' : ' 2;animation-direction:alternate;'}${style}">
                         <div class="notify-title">${title}</div>
                         <div class="notify-content">${content}</div>
-                    </div>`)[0];
+                    </div>`);
         $(".notify-container").append(ne);
         if (duration > 0) {
             setTimeout(function () {
                 ne.remove()
-            }, duration * 1000 - 50);
+            }, duration * 1000);
         }
     },
     success: function (title, content, duration) {
@@ -40,7 +40,20 @@ $(function () {
                     VCode: $("#VCode").val()
                 },
                 function (data) {
-                    notify.success("提示", data);
+                    console.log(data)
+                    switch (parseInt(data)) {
+                        case 401:
+                            notify.error("错误", "验证码错误！");
+                            break;
+                        case 402:
+                            notify.error("错误", "用户名或密码不正确!");
+                            break;
+                        case 201:
+                            notify.success("成功", "登录成功");
+                            break;
+                        default:
+                            notify.error("错误", "未知错误！");
+                    }
                 });
         }
     });

@@ -24,13 +24,32 @@ var notify = {
 };
 
 $(function () {
+    $("#province").focus(function () {
+        $.get("../getProvince.do", {},
+            function (data) {
+                var arr = data.split(" ");
+                $("#province").empty();
+                $("#province").append("<option value=''>省份</option>");
+                for (let i = 0; i < arr.length - 1; i++)
+                    $("#province").append("<option value='" + arr[i] + "'>" + arr[i] + "</option>");
+            });
+    });
+
     $("#province").change(function () {
-        const index = $("#province").get(0).selectedIndex - 1;
-        const cityName = cityArr[index];
-        $("#city").empty();
-        $("#city").append("<option value=''>城市</option>");
-        for (let i = 1; i < cityArr[index].length; i++)
-            $("#city").append("<option value='" + i + "'>" + cityName[i] + "</option>");
+        const pro = $("#province").val();
+        $.get("../getCity.do",
+            {
+                province: pro
+            },
+            function (data) {
+                console.log(pro);
+                console.log(data);
+                var arr = data.split(" ");
+                $("#city").empty();
+                $("#city").append("<option value=''>城市</option>");
+                for (let i = 0; i < arr.length - 1; i++)
+                    $("#city").append("<option value='" + arr[i] + "'>" + arr[i] + "</option>");
+            });
     });
 
     $("#finish").click(function () {
@@ -52,13 +71,31 @@ $(function () {
                         name: $('#name').val(),
                         email: $('#email').val(),
                         phone_num: $('#phone_num').val(),
-                        province: provinceArr[$("#province").val()][0],
-                        city: cityArr[$("#province").val()][$("#city").val()],
+                        province: $("#province").val(),
+                        city: $("#city").val(),
                         birthday: $('#birthday').val(),
                         gender: $('input[name="gender"]:checked').val(),
                     },
                     function (data) {
-                        notify.success("提示", data);
+                        switch (parseInt(data)) {
+                            case 101:
+                                notify.warning("提示", "该邮箱已被使用！");
+                                break;
+                            case 102:
+                                notify.warning("提示", "该用户名已被使用!");
+                                break;
+                            case 103:
+                                notify.warning("提示", "该手机号已被使用!");
+                                break;
+                            case 202:
+                                notify.success("成功", "注册成功");
+                                break;
+                            case 403:
+                                notify.error("错误", "注册失败");
+                                break;
+                            default:
+                                notify.error("错误", "未知错误！");
+                        }
                     });
             }
         }

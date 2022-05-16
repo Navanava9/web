@@ -25,8 +25,6 @@ public class ProvinceSummaryController extends HttpServlet {
         Gson gson = new Gson();
         str = gson.toJson(list);
 
-        System.out.println(str);
-
         PrintWriter out = response.getWriter();
         out.println(str);
         out.flush();

@@ -5,9 +5,13 @@
     letter-spacing: .05em;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     height: 100%;
-    background: url(../img/pink.jpeg) no-repeat fixed;
+    background: url(../img/red.jpeg) no-repeat fixed;
     background-size: cover;
 }
 
@@ -45,6 +49,24 @@ body {
 }
 
 .MyContainer .btn {
-    background-image: linear-gradient(to left, rgb(238, 87, 203), rgb(255, 47, 211));
+    background-image: linear-gradient(to left, rgb(131, 0, 0), rgb(41, 0, 0));;
     color: rgb(255, 255, 255);
+}
+
+.MyContainer .btn:hover {
+    transform: scale(1.01);
+}
+
+.MyContainer .btn:active {
+    transform: scale(0.99);
+}
+
+.MyContainer .msg {
+    text-align: center;
+    line-height: 75px;
+}
+
+.MyContainer .msg a {
+    text-decoration-line: none;
+    color: #9d3564;
 }

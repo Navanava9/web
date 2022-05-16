@@ -34,12 +34,10 @@
 
 @keyframes notify-show-hide {
     0% {
-        opacity: 0;
         transform: translate(100vw, 0);
         margin-bottom: 15px
     }
-    30% {
-        opacity: 1;
+    40% {
         transform: translate(0, 0);
         margin-bottom: 15px
     }

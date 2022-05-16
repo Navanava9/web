@@ -29,16 +29,16 @@ public class registerController extends HttpServlet {
         String str = "";
 
         if (a.haveSameEmail(email))
-            str = "该邮箱已被使用！";
+            str = "101";//该邮箱已被使用
         else if (a.haveSameID(userName))
-            str = "该用户名已被使用！";
+            str = "102";//该用户名已被使用
         else if (a.haveSamePhone(phone_num))
-            str = "该手机号已被使用！";
+            str = "103";//该手机号已被使用
         else {
             if (a.userRegister())
-                str = "注册成功！";
+                str = "202";//注册成功
             else
-                str = "注册失败!";
+                str = "403";//注册失败
         }
 
 

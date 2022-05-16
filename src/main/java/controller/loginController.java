@@ -27,12 +27,12 @@ public class loginController extends HttpServlet {
         String VCode = (String) session.getAttribute("VCode");
 
         if (!InputVCode.equals(VCode))
-            str = "验证码错误!";
+            str = "401"; //验证码错误
         else {
             if (a.userLogin(userName, password))
-                str = "登录成功！";
+                str = "201"; //登录成功
             else
-                str = "用户名或密码不正确！";
+                str = "402"; //用户名或密码不正确
         }
 
         response.setContentType("text/html;charset=utf-8");

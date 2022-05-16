@@ -1,0 +1,81 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Times New Roman';
+    letter-spacing: .05em;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.title {
+    width: 100%;
+    height: 100px;
+    border-radius: 3px;
+    padding: 0 60px;
+    box-shadow: 0px -6px 20px 1px rgb(0 0 0 / 30%);
+    position: relative;
+}
+
+.title .logoImg {
+    position: relative;
+    height: 75%;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
+.selectionBar {
+    height: 180px;
+    width: 180px;
+    background-color: #ffffff;
+    margin: 50px 30px;
+    padding: 20px 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 30%);
+    z-index: 2;
+    float: left;
+}
+
+.charts {
+    width: 100%;
+    height: 1000px;
+    background: #eaeaea;
+}
+
+.selectionBar .btn {
+    width: 140px;
+    margin-bottom: 10px;
+    letter-spacing: .0em;
+    background-image: linear-gradient(to right, rgb(103, 103, 103), rgb(80, 80, 80));
+    color: rgb(255, 255, 255);
+}
+
+.charts .graph {
+    padding-top: 100px;
+}
+
+#pie {
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+    display: block;
+}
+
+#zhi {
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+    display: none;
+}
+
+#china-map {
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+    display: none;
+}

@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class VerifyCode {
     //定义一些变量
-    private int width = 60;
+    private int width = 80;
     private int height = 20;
     private int fontSize = 18;
     private StringBuilder VCode = new StringBuilder();

@@ -265,15 +265,15 @@ public class User {
                     "FROM web.user t\n" +
                     "WHERE (ID LIKE '%" + args[0] + "%'\n" +
                     "OR name LIKE '%" + args[0] + "%'\n" +
-                    "OR gender LIKE '%" + args[0] + "%'\n" +
-                    "OR province LIKE '%" + args[0] + "%'\n" +
-                    "OR city LIKE '%" + args[0] + "%')";
+                    "OR gender LIKE '" + args[0] + "'\n" +
+                    "OR province LIKE '" + args[0] + "%'\n" +
+                    "OR city LIKE '" + args[0] + "%')";
             for (int i = 1; i < args.length; i++) {
                 sql += ("AND (ID LIKE '%" + args[i] + "%'\n" +
                         "OR name LIKE '%" + args[i] + "%'\n" +
-                        "OR gender LIKE '%" + args[i] + "%'\n" +
-                        "OR province LIKE '%" + args[i] + "%'\n" +
-                        "OR city LIKE '%" + args[i] + "%')");
+                        "OR gender LIKE '" + args[i] + "'\n" +
+                        "OR province LIKE '" + args[i] + "%'\n" +
+                        "OR city LIKE '" + args[i] + "%')");
             }
             PreparedStatement pst = con.prepareStatement(sql);
 
